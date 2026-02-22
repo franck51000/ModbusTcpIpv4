@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modbus TCP/IP"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:gravity="center"
+            android:paddingBottom="8dp"/>
+
+        <!-- Connection section -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Connexion" android:textStyle="bold" android:textSize="16sp"
+            android:textColor="#1976D2" android:paddingBottom="4dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="IP:" android:layout_gravity="center_vertical" android:minWidth="60dp"/>
+            <EditText android:id="@+id/editIpAddress"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="2"
+                android:hint="192.168.1.1" android:text="192.168.1.1"
+                android:inputType="text" android:background="@android:drawable/edit_text"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text=" Port:" android:layout_gravity="center_vertical"/>
+            <EditText android:id="@+id/editPort"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:hint="502" android:text="502"
+                android:inputType="number" android:background="@android:drawable/edit_text"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginTop="4dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Unit ID:" android:layout_gravity="center_vertical" android:minWidth="60dp"/>
+            <EditText android:id="@+id/editUnitId"
+                android:layout_width="80dp" android:layout_height="wrap_content"
+                android:hint="1" android:text="1"
+                android:inputType="number" android:background="@android:drawable/edit_text"/>
+        </LinearLayout>
+
+        <Button android:id="@+id/btnConnect"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Connecter" android:layout_marginTop="8dp"
+            android:textColor="@android:color/white" android:textStyle="bold"/>
+
+        <!-- Divider -->
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginTop="12dp" android:layout_marginBottom="12dp"/>
+
+        <!-- Modbus parameters -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Paramètres Modbus" android:textStyle="bold" android:textSize="16sp"
+            android:textColor="#1976D2" android:paddingBottom="4dp"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Adresse:" android:layout_gravity="center_vertical" android:minWidth="80dp"/>
+            <EditText android:id="@+id/editStartAddress"
+                android:layout_width="80dp" android:layout_height="wrap_content"
+                android:hint="0" android:text="0"
+                android:inputType="number" android:background="@android:drawable/edit_text"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="  Nb reg:" android:layout_gravity="center_vertical"/>
+            <EditText android:id="@+id/editNumRegisters"
+                android:layout_width="60dp" android:layout_height="wrap_content"
+                android:hint="10" android:text="10"
+                android:inputType="number" android:background="@android:drawable/edit_text"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Fonction:" android:layout_marginTop="8dp"/>
+        <Spinner android:id="@+id/spinnerFunctionCode"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"/>
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Valeur(s) à écrire:" android:layout_marginTop="8dp"/>
+        <EditText android:id="@+id/editWriteValue"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Valeur(s) séparées par virgule (ex: 100,200)"
+            android:inputType="text" android:background="@android:drawable/edit_text"/>
+
+        <!-- Read/Write buttons -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_marginTop="8dp">
+            <Button android:id="@+id/btnRead"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="Lire" android:backgroundTint="#1976D2" android:textColor="@android:color/white"
+                android:layout_marginEnd="4dp"/>
+            <Button android:id="@+id/btnWrite"
+                android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:text="Ecrire" android:backgroundTint="#F57C00" android:textColor="@android:color/white"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginTop="12dp" android:layout_marginBottom="12dp"/>
+
+        <!-- Cyclic mode -->
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical">
+            <CheckBox android:id="@+id/checkboxCyclic"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Mode Cyclique" android:textStyle="bold" android:textColor="#1976D2"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="  Intervalle (ms):" android:layout_gravity="center_vertical"/>
+            <EditText android:id="@+id/editCyclicInterval"
+                android:layout_width="80dp" android:layout_height="wrap_content"
+                android:hint="1000" android:text="1000"
+                android:inputType="number" android:background="@android:drawable/edit_text"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginTop="12dp" android:layout_marginBottom="12dp"/>
+
+        <!-- Format selection -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Format d'affichage" android:textStyle="bold" android:textSize="16sp"
+            android:textColor="#1976D2"/>
+        <RadioGroup android:id="@+id/radioGroupFormat"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/radioDecimal"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Décimal" android:checked="true" android:layout_weight="1"/>
+            <RadioButton android:id="@+id/radioHexadecimal"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Hexadécimal" android:layout_weight="1"/>
+            <RadioButton android:id="@+id/radioBinary"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Binaire" android:layout_weight="1"/>
+        </RadioGroup>
+
+        <!-- Divider -->
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginTop="12dp" android:layout_marginBottom="12dp"/>
+
+        <!-- Log section -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Journal" android:textStyle="bold" android:textSize="16sp"
+            android:textColor="#1976D2" android:paddingBottom="4dp"/>
+        <ScrollView android:id="@+id/scrollLog"
+            android:layout_width="match_parent" android:layout_height="120dp"
+            android:background="#263238" android:padding="4dp">
+            <TextView android:id="@+id/textLog"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textColor="#B2FF59" android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:text="Prêt\n"/>
+        </ScrollView>
+
+        <!-- Divider -->
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="#BDBDBD" android:layout_marginTop="12dp" android:layout_marginBottom="12dp"/>
+
+        <!-- Register table -->
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Valeurs des Registres" android:textStyle="bold" android:textSize="16sp"
+            android:textColor="#1976D2" android:paddingBottom="4dp"/>
+        <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TableLayout android:id="@+id/tableRegisters"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:stretchColumns="*"/>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+</ScrollView>
