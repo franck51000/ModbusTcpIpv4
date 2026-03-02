@@ -5,15 +5,11 @@ Utilitaire Modbus Tcp Ip
 
 
 
-Voici une politique complète, structurée et adaptée à une application d’automatisme industriel qui ne collecte aucune donnée. Elle est rédigée pour être directement intégrable dans un dépôt GitHub (README, dossier docs, ou fichier dédié comme PRIVACY_POLICY.md). Le ton reste professionnel, clair et conforme aux attentes des environnements industriels.
-
----
-
 Politique de Confidentialité et d’Utilisation
 
 Application d’Automatisme Industriel Modbus TcpIp
 
-Cette politique décrit les engagements de [Nom de votre application] concernant la confidentialité, la sécurité, l’utilisation et la conformité réglementaire dans le cadre d’un usage industriel. L’application est conçue pour fonctionner sans collecte, stockage ou transmission de données personnelles ou industrielles.
+Cette politique décrit et concerne la confidentialité, la sécurité, l’utilisation et la conformité réglementaire dans le cadre d’un usage industriel. L’application est conçue pour fonctionner sans collecte, stockage ou transmission de données personnelles ou industrielles.
 
 ---
 
