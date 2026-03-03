@@ -1,0 +1,62 @@
+name: Build and Release APK and AAB
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build Release APK
+        run: ./gradlew assembleRelease
+
+      - name: Build Release AAB
+        run: ./gradlew bundleRelease
+
+      - name: Copy built files to app/release directory
+        run: |
+          mkdir -p app/release
+          cp app/build/outputs/apk/release/app-release-unsigned.apk \
+             app/release/ModbusTcpIpv4-${GITHUB_REF_NAME}.apk
+          cp app/build/outputs/bundle/release/app-release.aab \
+             app/release/ModbusTcpIpv4-${GITHUB_REF_NAME}.aab
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ModbusTcpIpv4-${{ github.ref_name }}-apk
+          path: app/release/ModbusTcpIpv4-${{ github.ref_name }}.apk
+
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ModbusTcpIpv4-${{ github.ref_name }}-aab
+          path: app/release/ModbusTcpIpv4-${{ github.ref_name }}.aab
+
+      - name: Create GitHub Release with APK and AAB
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            app/release/ModbusTcpIpv4-${{ github.ref_name }}.apk
+            app/release/ModbusTcpIpv4-${{ github.ref_name }}.aab
+          generate_release_notes: true
